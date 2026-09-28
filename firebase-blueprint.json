@@ -1,0 +1,334 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with role-based access information and contact details",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique Firebase Authentication UID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the user",
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of user",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Contact phone number",
+          "maxLength": 20
+        },
+        "role": {
+          "type": "string",
+          "description": "Role in the application (customer or retailer)",
+          "enum": ["customer", "retailer"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of user creation"
+        }
+      },
+      "required": ["id", "name", "email", "role", "createdAt"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Skincare product catalog item",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique product document ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Product title",
+          "maxLength": 150
+        },
+        "brand": {
+          "type": "string",
+          "description": "Brand name",
+          "maxLength": 80
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the skincare product",
+          "maxLength": 2000
+        },
+        "category": {
+          "type": "string",
+          "description": "Skincare category",
+          "enum": ["Face Care", "Cleansers", "Moisturizers", "Serums", "Sunscreens", "Masks", "Body Care"]
+        },
+        "price": {
+          "type": "number",
+          "description": "Original retail price in INR"
+        },
+        "discount": {
+          "type": "number",
+          "description": "Discount percentage (0-100)"
+        },
+        "stock": {
+          "type": "number",
+          "description": "Available inventory units"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Image URL or data URI of the product"
+        },
+        "rating": {
+          "type": "number",
+          "description": "Average review rating from 1 to 5"
+        },
+        "ratingCount": {
+          "type": "number",
+          "description": "Total number of user ratings"
+        },
+        "ingredients": {
+          "type": "string",
+          "description": "Active and supporting ingredients list",
+          "maxLength": 1000
+        },
+        "benefits": {
+          "type": "string",
+          "description": "Key skin benefits and effects",
+          "maxLength": 1000
+        },
+        "skinType": {
+          "type": "string",
+          "description": "Target skin type",
+          "enum": ["All Skin Types", "Oily", "Dry", "Combination", "Sensitive", "Normal"]
+        },
+        "howToUse": {
+          "type": "string",
+          "description": "Application directions and instructions",
+          "maxLength": 1000
+        },
+        "isBestSeller": {
+          "type": "boolean",
+          "description": "Whether highlighted as a best seller"
+        },
+        "isFeatured": {
+          "type": "boolean",
+          "description": "Whether featured on the home landing page"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        }
+      },
+      "required": ["name", "brand", "category", "price", "stock", "skinType", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase order",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique order identifier"
+        },
+        "userId": {
+          "type": "string",
+          "description": "UID of the purchasing customer"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Full name of the customer"
+        },
+        "customerEmail": {
+          "type": "string",
+          "description": "Email address of customer"
+        },
+        "customerPhone": {
+          "type": "string",
+          "description": "Phone number"
+        },
+        "items": {
+          "type": "array",
+          "description": "Array of ordered products with quantity, price, and snapshot details"
+        },
+        "subtotal": {
+          "type": "number",
+          "description": "Subtotal before discount and tax in INR"
+        },
+        "discountAmount": {
+          "type": "number",
+          "description": "Discount deducted in INR"
+        },
+        "couponCode": {
+          "type": "string",
+          "description": "Applied discount voucher code"
+        },
+        "shippingFee": {
+          "type": "number",
+          "description": "Shipping charges in INR"
+        },
+        "taxAmount": {
+          "type": "number",
+          "description": "Tax (GST) amount in INR"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Grand total paid in INR"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "Selected payment method (UPI, Card, Net Banking, Wallet)",
+          "enum": ["UPI", "Credit Card", "Debit Card", "Net Banking", "Wallets"]
+        },
+        "paymentStatus": {
+          "type": "string",
+          "description": "Status of the payment transaction",
+          "enum": ["Pending", "Paid", "Failed", "Refunded"]
+        },
+        "paymentId": {
+          "type": "string",
+          "description": "Razorpay or Gateway transaction reference ID"
+        },
+        "orderStatus": {
+          "type": "string",
+          "description": "Fulfillment status of the order",
+          "enum": ["Order Placed", "Confirmed", "Processing", "Shipped", "Out for Delivery", "Delivered", "Cancelled"]
+        },
+        "shippingAddress": {
+          "type": "string",
+          "description": "Full shipping address formatted"
+        },
+        "city": {
+          "type": "string",
+          "description": "Shipping city"
+        },
+        "state": {
+          "type": "string",
+          "description": "Shipping state"
+        },
+        "pinCode": {
+          "type": "string",
+          "description": "Postal PIN Code"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp of order creation"
+        }
+      },
+      "required": ["userId", "items", "totalAmount", "paymentStatus", "orderStatus", "createdAt"]
+    },
+    "Cart": {
+      "title": "Cart",
+      "description": "Active shopping cart for customer",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Customer UID who owns the cart"
+        },
+        "items": {
+          "type": "array",
+          "description": "Items in cart with productId, quantity, price"
+        },
+        "couponCode": {
+          "type": "string",
+          "description": "Currently active coupon code"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["userId", "items", "updatedAt"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Customer product feedback and rating",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Review ID"
+        },
+        "productId": {
+          "type": "string",
+          "description": "ID of product reviewed"
+        },
+        "userId": {
+          "type": "string",
+          "description": "UID of author"
+        },
+        "userName": {
+          "type": "string",
+          "description": "Name of customer"
+        },
+        "rating": {
+          "type": "number",
+          "description": "Rating score from 1 to 5"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Review feedback text",
+          "maxLength": 1000
+        },
+        "skinType": {
+          "type": "string",
+          "description": "Customer skin type"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO creation date"
+        }
+      },
+      "required": ["productId", "userId", "userName", "rating", "comment", "createdAt"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Designated retailer/admin authorization record",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Authorized retailer email"
+        },
+        "role": {
+          "type": "string",
+          "description": "Administrator role designation"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles and customer accounts"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Skincare product catalog managed by retailers and viewed by customers"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Customer orders synchronized in real-time with retailer dashboard"
+    },
+    "/carts/{userId}": {
+      "schema": "Cart",
+      "description": "Customer shopping carts persisted per user"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Product customer reviews and ratings"
+    },
+    "/admins/{userId}": {
+      "schema": "Admin",
+      "description": "Retailer administrator whitelist mapping"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "GlowCare – Premium Skincare",
+  "description": "Premium skincare e-commerce platform and retailer SaaS dashboard featuring glassmorphism design, real-time analytics, and secure role-based access control.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
