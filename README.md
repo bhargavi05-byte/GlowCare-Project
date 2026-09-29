@@ -8,6 +8,7 @@ A production-grade, SaaS-based e-commerce web application for a luxury skincare 
 
 ### 🛍️ 1. Customer Experience
 - **Hero & Landing Experience**: Modern glassmorphic hero ("Elevate Your Skincare, Naturally") with floating ingredient showcases, best sellers, and verified transformation reviews.
+- **n8n AI Skincare Advisor Chatbox**: Integrated AI chatbot widget connected to `https://cap00136105.app.n8n.cloud/webhook/472be8b4-1cd9-4776-9b81-1743eea8f0e7/chat`. Supports real-time consultation, routine recommendations, and order queries with brand-matched glassmorphism styling.
 - **Product Catalog & Advanced Filters**: Real-time keyword search, category filter, dynamic price range slider, target skin-type filter (All, Oily, Dry, Combination, Sensitive, Normal), minimum star rating filter, and sorting.
 - **Deep-Dive Product Pages**: High-resolution skincare visuals, active clinical ingredients, documented benefits, application instructions, stock availability, and verified customer review submissions.
 - **Real-Time Shopping Cart**: Synchronized with Cloud Firestore per customer UID. Includes instant quantity modifiers, coupon code engine (`GLOW20`, `FIRSTCARE`, `GLOW10`, `FESTIVE15`), subtotal, free shipping calculator, and 5% GST breakdown.

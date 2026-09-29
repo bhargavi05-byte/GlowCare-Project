@@ -17,6 +17,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { RetailerDashboard } from './components/retailer/RetailerDashboard';
+import { N8nChatWidget } from './components/chat/N8nChatWidget';
 import { ShieldAlert, ArrowLeft } from 'lucide-react';
 
 function AppContent() {
@@ -223,6 +224,9 @@ function AppContent() {
         onViewOrders={() => setCurrentView('orders')}
         onContinueShopping={() => setCurrentView('catalog')}
       />
+
+      {/* n8n Skincare AI Chatbox Widget */}
+      <N8nChatWidget />
     </div>
   );
 }
